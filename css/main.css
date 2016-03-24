@@ -337,7 +337,7 @@ body, html {
 }
 
 /* line 8, ../sass/main.scss */
-.wrapper {
+.container {
   display: flex;
   align-content: center;
   justify-content: center;
@@ -348,15 +348,22 @@ body, html {
 #reels {
   background: gray;
   width: 312px;
+  padding: 2px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 19, ../sass/main.scss */
-#reels canvas {
+/* line 20, ../sass/main.scss */
+#reels img {
+  width: 100px;
+  height: 100px;
+}
+/* line 25, ../sass/main.scss */
+#reels .reel {
   width: 100px;
   height: 300px;
   background: yellow;
   margin: 2px;
   display: inline-block;
   float: left;
+  overflow: hidden;
 }
