@@ -331,7 +331,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
 }
 
-/* line 7, ../sass/main.scss */
+/* line 14, ../sass/main.scss */
 body, html {
   height: 100%;
 }
@@ -343,7 +343,7 @@ body, html {
     transform: rotateX(0deg);
   }
 }
-/* line 18, ../sass/main.scss */
+/* line 25, ../sass/main.scss */
 .container {
   display: flex;
   align-content: center;
@@ -351,7 +351,36 @@ body, html {
   min-height: 100%;
 }
 
-/* line 24, ../sass/main.scss */
+/* line 31, ../sass/main.scss */
+#caffeine-machine {
+  width: 360px;
+  background-color: red;
+  padding: 40px;
+  border-radius: 50% 50% 30px 30px / 120px 120px 30px 30px;
+  margin: 40px;
+  -moz-box-shadow: rgba(128, 128, 128, 0.5) 0 0 30px 1px inset;
+  -webkit-box-shadow: rgba(128, 128, 128, 0.5) 0 0 30px 1px inset;
+  box-shadow: rgba(128, 128, 128, 0.5) 0 0 30px 1px inset;
+}
+/* line 39, ../sass/main.scss */
+#caffeine-machine h1 {
+  font-family: 'Courgette', cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: #f0f0f0;
+  height: 4rem;
+  line-height: 4rem;
+  padding-top: 2rem;
+  border: 3px solid #f0f0f0;
+  border-radius: 50% 50% 20px 20px / 80% 80% 20px 20px;
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
+}
+
+/* line 54, ../sass/main.scss */
 #reels {
   background: gray;
   overflow: hidden;
@@ -360,9 +389,9 @@ body, html {
   height: 120px;
   position: relative;
   perspective: 500px;
-  margin: 100px auto 0 auto;
+  margin: 20px auto;
 }
-/* line 33, ../sass/main.scss */
+/* line 63, ../sass/main.scss */
 #reels img {
   background: red;
   height: 100px;
@@ -376,19 +405,19 @@ body, html {
   top: 10px;
   transform: translateZ(30px);
 }
-/* line 46, ../sass/main.scss */
+/* line 76, ../sass/main.scss */
 #reels img:nth-child(1) {
   transform: rotateX(0deg) translateZ(28px);
 }
-/* line 49, ../sass/main.scss */
+/* line 79, ../sass/main.scss */
 #reels img:nth-child(2) {
   transform: rotateX(120deg) translateZ(28px);
 }
-/* line 52, ../sass/main.scss */
+/* line 82, ../sass/main.scss */
 #reels img:nth-child(3) {
   transform: rotateX(240deg) translateZ(28px);
 }
-/* line 57, ../sass/main.scss */
+/* line 87, ../sass/main.scss */
 #reels .reel {
   display: inline-block;
   float: left;
