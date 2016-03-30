@@ -2,14 +2,23 @@
 @import "compass/reset";
 @import "compass/utilities";
 @import "compass/css3";
+@import "compass/utilities/general/clearfix";
 
-$translateZ: translateZ(28px);
+$translateZ: translateZ(81px);
 $inner-border-radius: 14px;
 $decoration-color: #f0f0f0;
 
 $default-text-shadow-color: rgba(black, 0.6);
 $default-text-shadow-blur: 1px;
 $default-text-shadow-v-offset: 1px;
+
+@mixin border-shadow($opacity) {
+	@include box-shadow(rgba(black, $opacity) 0 0 1px 1px, rgba(black, $opacity) 0 0 1px 1px inset);
+}
+
+@mixin outer-shadow($opacity) {
+	@include box-shadow(rgba(black, $opacity) 0 0 1px 1px);
+}
 
 body, html {
 	height: 100%;
@@ -29,9 +38,9 @@ body, html {
 	min-height: 100%;
 }
 #caffeine-machine {
-	width: 360px;
+	width: 380px;
 	background-color: red;
-	padding: 40px;
+	padding: 40px 40px 60px 40px;
 	border-radius: 50% 50% 30px 30px / 120px 120px 30px 30px;
 	margin: 40px;
 	@include box-shadow(rgba(gray, 0.5) 0 0 30px 1px inset);
@@ -48,48 +57,161 @@ body, html {
 		border: 3px solid $decoration-color;
 		border-radius:  50% 50% 20px 20px / 80% 80% 20px 20px;
 		@include single-text-shadow;
-		@include box-shadow(rgba(black, 0.2) 0 0 1px 1px, rgba(black, 0.2) 0 0 1px 1px inset);
+		@include border-shadow(0.2);
+// 		@include box-shadow(rgba(black, 0.2) 0 0 1px 1px, rgba(black, 0.2) 0 0 1px 1px inset);
 	}
 }
 #reels {
-	background: gray;
-	@include clearfix;
-	width: 360px;
-	height: 120px;
-	position: relative;
-	perspective: 500px;
-	margin: 20px auto;
+	@include pie-clearfix;
+	width: 100%;
+// 	perspective: 500px;
+	margin: 30px 0;
 	
 	img {
-		background: red;
-		height: 100px;
-		width: 100px;
+		background: white;
+		width: 100%;
 		text-align: center;
-		line-height: 100px;
+		vertical-align: middle;
 		margin: 0;
-		display: block;
 		position: absolute;
-		left: 10px;
-		top: 10px;
-		transform: translateZ(30px);
+		left: 0px;
+		top: 0px;
+		transform: $translateZ;
+		padding: 10px 0;
 		
 		&:nth-child(1) { 
 			transform: rotateX(0deg) $translateZ; 
 		}
 		&:nth-child(2) { 
-			transform: rotateX(120deg) $translateZ; 
+			transform: rotateX(60deg) $translateZ; 
 		}
 		&:nth-child(3) { 
+			transform: rotateX(120deg) $translateZ; 
+		}
+		&:nth-child(4) { 
+			transform: rotateX(180deg) $translateZ; 
+		}
+		&:nth-child(5) { 
 			transform: rotateX(240deg) $translateZ; 
+		}
+		&:nth-child(6) { 
+			transform: rotateX(300deg) $translateZ; 
+		}
+	}
+	.reel-window {
+		width: 80px;
+		height: 100px;
+		border: 3px solid $decoration-color;
+		border-radius: 8px;
+		float: left;
+		margin-right: 12px;
+		overflow: hidden;
+		@include box-sizing(border-box);
+		@include border-shadow(0.2);
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	
+	.reel {
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+		animation: rotate 5s;
+		position: relative;
+		z-index: 1;
+	}
+}
+
+#play {
+	height: 100px;
+	width: 100px;
+	background: #444;
+	border: 3px solid $decoration-color;
+	border-radius: 8px;
+	@include box-sizing(border-box);
+	@include border-shadow(0.2);
+	float: right;
+	font-family: 'Courgette', cursive;
+	color: $decoration-color;
+	font-size: 1.25rem;
+	@include transition-property(all);
+	@include transition-duration(0.3s);
+	&:focus, &:active {
+		outline: none;
+	}
+	&:hover {
+		background: black;
+		@include box-sizing(border-box);
+		@include border-shadow(0.2);
+	}
+}
+
+#status-bar {
+	width: 100%;
+	height: 50px;
+	border: 3px solid $decoration-color;
+	border-radius: 8px;
+	position: relative;
+	@include box-sizing(border-box);
+	@include border-shadow(0.2);
+	
+	> div {
+		width: 100%;
+		height: 100%;		
+		color: $decoration-color;
+		font-family: 'Nunito', sans-serif;
+		font-size: 1.5rem;
+		text-align: center;
+		line-height: 44px;
+		@include single-text-shadow;
+	}
+	
+	.in-progress {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		span {
+			height: 18px;
+			width: 18px;
+			display: block;
+			background: white;
+			border-radius: 50%;
+			border: 2px solid $decoration-color;
+			@include outer-shadow(0.2);
+			&.active {
+				background-color: yellow;
+				@include box-shadow(rgba(yellow, 0.9) 0 0 10px 10px)
+			}
 		}
 	}
 	
-	.reel {
-		display: inline-block;
-		float: left;
-		width: 120px;
-		height: 120px;
-		transform-style: preserve-3d;
-		animation: rotate 3s;
-	}
+	.loose {	}
+}
+
+.hide {
+	display: none;
+}
+
+#drink {
+	height: 150px;
+	width: 240px;
+	background: #333;
+	border-radius: 50% 50% 8px 8px / 50% 50% 8px 8px;
+	border: 10px solid $decoration-color;
+	margin: 30px auto 0;
+	@include box-shadow(rgba(black, 0.2) 0 0 1px 1px, rgba(black, 0.9) 0 0 3px 1px inset);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	
+	 > div {
+		 height: 100px;
+		 width: 100px;
+		 background: white;
+	 }
+
+
 }

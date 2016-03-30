@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>Espresso Bar Slot Machine</title>
 		<link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="css/main.css"/>
 		<!-- 
 			This script enables structural HTML5 elements in old IE.
@@ -22,17 +23,24 @@
 			<div id="caffeine-machine">
 				<h1>Caffeine Machine</h1>
 				<div id="reels">
-				   	<div id="reel1" class="reel">
+					<div class="reel-window">
+					   	<div id="reel1" class="reel">
+						</div>
 					</div>
-				   	<div id="reel2" class="reel">
+					<div class="reel-window">
+					   	<div id="reel2" class="reel">
+						</div>
 					</div>
-				   	<div id="reel3" class="reel">
+					<div class="reel-window">
+					   	<div id="reel3" class="reel">
+						</div>
 					</div>
+					
+					<button id="play">Start</button>
 				</div>
-				<button id="play">Play</button>
 				<div id="status-bar">
 					<div class="in-progress">
-						<span></span>
+						<span class="active"></span>
 						<span></span>
 						<span></span>
 						<span></span>
@@ -40,15 +48,15 @@
 						<span></span>
 						<span></span>
 					</div>
-					<div class="loose">No Luck</div>
-					<div class="drink espresso">Espresso</div>
-					<div class="drink coffee">Coffee</div>
-					<div class="drink tea">Tea</div>
+					<div class="loose hide">No Luck</div>
+					<div class="drink espresso hide">Espresso</div>
+					<div class="drink coffee hide">Coffee</div>
+					<div class="drink tea hide">Tea</div>
 				</div>
 				<div id="drink">
 					<div id="espresso">espresso</div>
-					<div id="coffee">coffee</div>
-					<div id="tea">tea</div>
+					<div id="coffee" class="hide">coffee</div>
+					<div id="tea" class="hide">tea</div>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 var reels = [
-				['coffee-maker',   'teapot',       'espresso-machine'],
-				['coffee-maker',   'teapot',       'espresso-machine'],
-				['coffee-maker',   'teapot',       'espresso-machine']
+				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine'],
+				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine'],
+				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine']
 				/*
 
 				['coffee-filter',  'tea-strainer', 'espresso-tamper'],
@@ -13,12 +13,13 @@ var spinningTime = 2000;
 var reelRotations = [];
 var cssRotationValue = "";
 var positions = [0, 0, 0];
+var angle = 60;
 
 
 
 function init(){
 	$('.reel').each(function(i, reelContent){
-		for (j = 0; j < 3; j++) {
+		for (j = 0; j < reels[0].length; j++) {
 			reelContent.innerHTML += '<img src="img/' + reels[i][j] + '.png" />';
 		}
 	});
@@ -28,9 +29,9 @@ function init(){
 
 function play(){
 	
-	for (var i = 0; i < 3; ++i) {
-		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * 120;	 // random number from 10 to 40 multiplied by 120 degree
-		positions[i] = (reelRotations[i] / 120) % 3  // calculates reel index position
+	for (var i = 0; i < reels.length; i++) {
+		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * angle;	 // random number from 10 to 40 multiplied by 120 degree
+		positions[i] = (reelRotations[i] / angle) % 3  // calculates reel index position
 	}
 		
 	animate();
@@ -55,7 +56,7 @@ function animate(){
 function clearRotationDegree(){
 	
 	$('.reel').each(function(i, reel){
-        initialCssRotationValue = positions[i] * 120;
+        initialCssRotationValue = positions[i] * angle;
         console.log("init rot value: " + initialCssRotationValue);
         initialCssRotationValue = "rotateX(" + initialCssRotationValue + "deg)";
 
