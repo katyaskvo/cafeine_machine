@@ -1,0 +1,104 @@
+<html>	
+	<head>
+		<style>
+			img {
+				background: red;
+				color: white;
+				height: 100px;
+				width: 100px;
+				text-align: center;
+				line-height: 100px;
+				
+			  margin: 0;
+			  display: block;
+			  position: absolute;
+			  left: 10px;
+			  top: 10px;
+			  border: 2px solid black;
+			}
+			.container {
+			  width: 360px;
+			  height: 120px;
+			  position: relative;
+			  perspective: 500px;
+			  margin: 100px auto 0 auto;
+			}
+			@keyframes rotate {
+			   0% { 
+				-webkit-transform: rotateX(0deg);
+				-moz-transform: rotateX(0deg);
+				transform: rotateX(0deg); 
+				}
+			}
+			.carousel {
+			  width: 120px;
+			  height: 120px;
+			  transform-style: preserve-3d;
+			  float: left;
+			  animation: rotate 3s;
+			  transition: 300ms linear all;
+			}
+			
+			.carousel img:nth-child(1) { transform: rotateX(   0deg ) translateZ( 30px ); }
+			.carousel img:nth-child(2) { transform: rotateX(  120deg ) translateZ( 30px ); }
+			.carousel img:nth-child(3) { transform: rotateX(  240deg ) translateZ( 30px ); }
+			
+			
+			
+			
+
+			#click-me {
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+	
+	<body lang="en">
+
+		<section class="container">
+		  <div class="carousel rotate-box1" style="transform: rotateX(120deg)">
+		    <img src="img/coffee-maker.png"/>
+		    <img src="img/teapot.png"/>
+		    <img src="img/espresso-machine.png"/>
+		  </div>
+		  <div class="carousel rotate-box2" style="transform: rotateX(120deg)">
+		    <img src="img/coffee-maker.png"/>
+		    <img src="img/teapot.png"/>
+		    <img src="img/espresso-machine.png"/>
+		  </div>
+		  <div class="carousel rotate-box3" style="transform: rotateX(240deg)">
+		    <img src="img/coffee-maker.png"/>
+		    <img src="img/teapot.png"/>
+		    <img src="img/espresso-machine.png"/>
+		  </div>
+		</section>
+		
+		  <div id="click-me">Rotate</div>
+		  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+		<script>
+			$(document).ready(function(){
+			    $('#click-me').click(function(){
+			        $('.rotate-box1').css({
+			        "-moz-transform":"rotateX(2400deg)",
+			        "-webkit-transform":"rotateX(2400deg)",
+			
+			        });
+			        $('.rotate-box2').css({
+			
+			        //for firefox
+			       "-moz-transform":"rotateX(2160deg)",
+			        "-webkit-transform":"rotateX(2160deg)",
+			
+			        });
+			        $('.rotate-box3').css({
+			
+			        //for firefox
+			       "-moz-transform":"rotateX(1440deg)",
+			        "-webkit-transform":"rotateX(1440deg)",
+			
+			        });
+			    });
+			});
+		</script>
+	</body>
+</html>	
