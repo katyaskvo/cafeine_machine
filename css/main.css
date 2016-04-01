@@ -385,6 +385,7 @@ body, html {
   *zoom: 1;
   width: 100%;
   margin: 30px 0;
+  position: relative;
 }
 /* line 38, ../../../../../Applications/compass.app/Contents/Resources/lib/ruby/compass_1.0/compass-core-1.0.3/stylesheets/compass/utilities/general/_clearfix.scss */
 #reels:after {
@@ -392,7 +393,7 @@ body, html {
   display: table;
   clear: both;
 }
-/* line 70, ../sass/main.scss */
+/* line 71, ../sass/main.scss */
 #reels img {
   background: white;
   width: 100%;
@@ -405,61 +406,81 @@ body, html {
   transform: translateZ(81px);
   padding: 10px 0;
 }
-/* line 82, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 #reels img:nth-child(1) {
   transform: rotateX(0deg) translateZ(81px);
 }
-/* line 85, ../sass/main.scss */
+/* line 86, ../sass/main.scss */
 #reels img:nth-child(2) {
   transform: rotateX(60deg) translateZ(81px);
 }
-/* line 88, ../sass/main.scss */
+/* line 89, ../sass/main.scss */
 #reels img:nth-child(3) {
   transform: rotateX(120deg) translateZ(81px);
 }
-/* line 91, ../sass/main.scss */
+/* line 92, ../sass/main.scss */
 #reels img:nth-child(4) {
   transform: rotateX(180deg) translateZ(81px);
 }
-/* line 94, ../sass/main.scss */
+/* line 95, ../sass/main.scss */
 #reels img:nth-child(5) {
   transform: rotateX(240deg) translateZ(81px);
 }
-/* line 97, ../sass/main.scss */
+/* line 98, ../sass/main.scss */
 #reels img:nth-child(6) {
   transform: rotateX(300deg) translateZ(81px);
 }
-/* line 101, ../sass/main.scss */
+/* line 102, ../sass/main.scss */
 #reels .reel-window {
-  width: 80px;
-  height: 100px;
-  border: 3px solid #f0f0f0;
+  width: 74px;
+  height: 94px;
   border-radius: 8px;
+  border: 3px solid #f0f0f0;
   float: left;
   margin-right: 12px;
   overflow: hidden;
+  z-index: 1;
+  position: relative;
+  -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px;
+}
+/* line 113, ../sass/main.scss */
+#reels .reel-window:last-child {
+  margin-right: 0;
+}
+/* line 116, ../sass/main.scss */
+#reels .reel-window:after {
+  content: "";
+  width: 80px;
+  height: 100px;
+  border-radius: 8px;
+  position: absolute;
+  top: -3px;
+  margin-left: -3px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
+  border: 3px solid #f0f0f0;
+  -moz-box-shadow: rgba(0, 0, 0, 0.7) 0 0 2px 1px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.7) 0 0 2px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.7) 0 0 2px 1px inset;
+  z-index: 2;
+  overflow: hidden;
 }
-/* line 111, ../sass/main.scss */
-#reels .reel-window:last-child {
-  margin-right: 0;
-}
-/* line 117, ../sass/main.scss */
+/* line 136, ../sass/main.scss */
 #reels .reel {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
   animation: rotate 5s;
   position: relative;
-  z-index: 1;
 }
 
-/* line 127, ../sass/main.scss */
+/* line 145, ../sass/main.scss */
 #play {
   height: 100px;
   width: 100px;
@@ -485,11 +506,11 @@ body, html {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 141, ../sass/main.scss */
+/* line 159, ../sass/main.scss */
 #play:focus, #play:active {
   outline: none;
 }
-/* line 144, ../sass/main.scss */
+/* line 162, ../sass/main.scss */
 #play:hover {
   background: black;
   -moz-box-sizing: border-box;
@@ -500,7 +521,7 @@ body, html {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
 }
 
-/* line 151, ../sass/main.scss */
+/* line 169, ../sass/main.scss */
 #status-bar {
   width: 100%;
   height: 50px;
@@ -513,8 +534,10 @@ body, html {
   -moz-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.2) 0 0 1px 1px inset;
+  overflow: hidden;
+  position: relative;
 }
-/* line 160, ../sass/main.scss */
+/* line 180, ../sass/main.scss */
 #status-bar > div {
   width: 100%;
   height: 100%;
@@ -524,14 +547,32 @@ body, html {
   text-align: center;
   line-height: 44px;
   text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
-/* line 171, ../sass/main.scss */
+/* line 192, ../sass/main.scss */
+#status-bar .option {
+  bottom: 0;
+}
+/* line 194, ../sass/main.scss */
+#status-bar .option.hide {
+  bottom: -50px;
+  -moz-transition-property: bottom;
+  -o-transition-property: bottom;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+}
+/* line 201, ../sass/main.scss */
 #status-bar .in-progress {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  top: 0;
 }
-/* line 175, ../sass/main.scss */
+/* line 206, ../sass/main.scss */
 #status-bar .in-progress span {
   height: 18px;
   width: 18px;
@@ -543,20 +584,28 @@ body, html {
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px;
 }
-/* line 183, ../sass/main.scss */
+/* line 214, ../sass/main.scss */
 #status-bar .in-progress span.active {
   background-color: yellow;
   -moz-box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
   -webkit-box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
   box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
 }
-
-/* line 193, ../sass/main.scss */
-.hide {
-  display: none;
+/* line 219, ../sass/main.scss */
+#status-bar .in-progress.hide {
+  top: -50px;
+  -moz-transition-property: top;
+  -o-transition-property: top;
+  -webkit-transition-property: top;
+  transition-property: top;
 }
 
-/* line 197, ../sass/main.scss */
+/*
+.hide {
+	display: none;
+}
+*/
+/* line 232, ../sass/main.scss */
 #drink {
   height: 150px;
   width: 240px;
@@ -568,13 +617,26 @@ body, html {
   -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.9) 0 0 3px 1px inset;
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 1px 1px, rgba(0, 0, 0, 0.9) 0 0 3px 1px inset;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  overflow: hidden;
 }
-/* line 210, ../sass/main.scss */
-#drink > div {
+/* line 243, ../sass/main.scss */
+#drink img {
   height: 100px;
-  width: 100px;
-  background: white;
+  position: absolute;
+  bottom: 150px;
+  margin-left: -50px;
+  left: 50%;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-property: bottom;
+  -o-transition-property: bottom;
+  -webkit-transition-property: bottom;
+  transition-property: bottom;
+}
+/* line 251, ../sass/main.scss */
+#drink img.show {
+  bottom: 0px;
+  position: absolute;
 }

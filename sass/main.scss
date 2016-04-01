@@ -66,6 +66,7 @@ body, html {
 	width: 100%;
 // 	perspective: 500px;
 	margin: 30px 0;
+	position: relative;
 	
 	img {
 		background: white;
@@ -99,17 +100,35 @@ body, html {
 		}
 	}
 	.reel-window {
-		width: 80px;
-		height: 100px;
-		border: 3px solid $decoration-color;
+		width: 74px;
+		height: 94px;
 		border-radius: 8px;
+		border: 3px solid $decoration-color;
 		float: left;
 		margin-right: 12px;
 		overflow: hidden;
-		@include box-sizing(border-box);
-		@include border-shadow(0.2);
+		z-index: 1;
+		position: relative;
+		@include box-shadow(rgba(black, 0.2) 0 0 1px 1px);
 		&:last-child {
 			margin-right: 0;
+		}
+		&:after {
+			content: "";
+			width: 80px;
+			height: 100px;
+			border-radius: 8px;
+			position: absolute;
+			top: -3px;
+			margin-left: -3px;
+			@include box-sizing(border-box);
+			@include border-shadow(0.2);
+			
+			border: 3px solid $decoration-color;
+			@include box-shadow(rgba(black, 0.7) 0 0 2px 1px inset);
+			z-index: 2;
+			
+			overflow: hidden;
 		}
 	}
 
@@ -120,7 +139,6 @@ body, html {
 		transform-style: preserve-3d;
 		animation: rotate 5s;
 		position: relative;
-		z-index: 1;
 	}
 }
 
@@ -156,6 +174,8 @@ body, html {
 	position: relative;
 	@include box-sizing(border-box);
 	@include border-shadow(0.2);
+	overflow: hidden;
+	position: relative;
 	
 	> div {
 		width: 100%;
@@ -166,12 +186,23 @@ body, html {
 		text-align: center;
 		line-height: 44px;
 		@include single-text-shadow;
+		position: absolute;
+		@include transition-duration(0.3s);
+	}
+	.option {
+			bottom: 0;
+		&.hide {
+			bottom: -50px;
+		@include transition-property(bottom);
+		}
+		
 	}
 	
 	.in-progress {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
+		top: 0;
 		span {
 			height: 18px;
 			width: 18px;
@@ -185,14 +216,18 @@ body, html {
 				@include box-shadow(rgba(yellow, 0.9) 0 0 10px 10px)
 			}
 		}
+		&.hide {
+			top: -50px;
+			@include transition-property(top);
+		}
 	}
-	
-	.loose {	}
 }
 
+/*
 .hide {
 	display: none;
 }
+*/
 
 #drink {
 	height: 150px;
@@ -203,15 +238,22 @@ body, html {
 	margin: 30px auto 0;
 	@include box-shadow(rgba(black, 0.2) 0 0 1px 1px, rgba(black, 0.9) 0 0 3px 1px inset);
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
+	overflow: hidden;
 	
-	 > div {
-		 height: 100px;
-		 width: 100px;
-		 background: white;
-	 }
+	img {
+		height: 100px;
+		position: absolute;
+		bottom: 150px;
+		margin-left: -50px;
+		left: 50%;
+		@include transition-duration(0.3s);
+		@include transition-property(bottom);
+		&.show {
+			bottom: 0px;
+			position: absolute;
+		}
+	}
+	
 
 
 }

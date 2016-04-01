@@ -22,21 +22,29 @@ function init(){
 		for (j = 0; j < reels[0].length; j++) {
 			reelContent.innerHTML += '<img src="img/' + reels[i][j] + '.png" />';
 		}
+		$(this).css({
+			"-moz-transform":"rotateX(0deg)",
+	        "-webkit-transform":"rotateX(0deg)",
+	        "transition":"0s ease all"
+        });
 	});
 
 	$('button').click(play);
+	
 }
 
 function play(){
+	
 	
 	for (var i = 0; i < reels.length; i++) {
 		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * angle;	 // random number from 10 to 40 multiplied by 120 degree
 		positions[i] = (reelRotations[i] / angle) % 3  // calculates reel index position
 	}
-		
+	$("#drink > img").removeClass("show");
+	turnOnLights();	
 	animate();
 	setTimeout(clearRotationDegree, 5000);
-
+	setTimeout(check, 5000);
 }
 
 function animate(){
@@ -44,13 +52,14 @@ function animate(){
 	$('.reel').each(function(i, reel){
 		cssRotationValue = "rotateX(" + reelRotations[i] + "deg)";
 		
-        console.log("rot value: " + reelRotations[i]);
 		$(reel).css({
 			"-moz-transform":cssRotationValue,
 	        "-webkit-transform":cssRotationValue,
 	        "transition":"5s ease all"
         });
 	});
+	$('#play').attr("disabled", "disabled");
+	setTimeout('enableButton()', 5000);
 }
 
 function clearRotationDegree(){
@@ -66,6 +75,36 @@ function clearRotationDegree(){
 	        "transition":"0s ease all"
         });
 	});
+}
+
+function turnOnLights(){
+	$("#status-bar .option").addClass("hide");
+	$("#status-bar .in-progress").removeClass("hide");
+
+}
+
+function check(){
+	$("#status-bar .option").addClass("hide");
+	console.log("positions array: " + positions);
+	if (positions[0] === positions[1] && positions[1] === positions[2]) {
+		if (positions[0] === 0) {
+			$("#status-bar .coffee").removeClass("hide");
+			$("#coffee").addClass("show");
+		} else if (positions[0] === -1){
+			$("#status-bar .tea").removeClass("hide");
+			$("#tea").addClass("show");
+		} else {
+			$("#status-bar .espresso").removeClass("hide");
+			$("#espresso").addClass("show");
+		}
+	} else {
+		$("#status-bar .lose").removeClass("hide");
+	}
+	
+}
+
+function enableButton(){
+   $('#play').removeAttr('disabled');
 }
 
 init();
