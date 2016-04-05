@@ -1,7 +1,7 @@
 var reels = [
-				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine'],
-				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine'],
-				['coffee-maker',   'teapot',       'espresso-machine', 'coffee-maker',   'teapot',       'espresso-machine']
+				['coffee-maker', 'teapot', 'espresso-machine', 'coffee-maker', 'teapot', 'espresso-machine'],
+				['coffee-filter', 'tea-strainer', 'espresso-tamper', 'coffee-filter', 'tea-strainer', 'espresso-tamper'],
+				['coffee-grounds', 'loose-tea', 'coffee-beans', 'coffee-grounds', 'loose-tea', 'coffee-beans']
 				/*
 
 				['coffee-filter',  'tea-strainer', 'espresso-tamper'],
@@ -20,7 +20,7 @@ var angle = 60;
 function init(){
 	$('.reel').each(function(i, reelContent){
 		for (j = 0; j < reels[0].length; j++) {
-			reelContent.innerHTML += '<img src="img/' + reels[i][j] + '.png" />';
+			reelContent.innerHTML += '<div class="pannel"><img src="img/' + reels[i][j] + '.svg" /></div>';
 		}
 		$(this).css({
 			"-moz-transform":"rotateX(0deg)",

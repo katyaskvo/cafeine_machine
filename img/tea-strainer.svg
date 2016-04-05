@@ -2,28 +2,26 @@
 <!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="464.999px" height="459.574px" viewBox="23.5 26.213 464.999 459.574" enable-background="new 23.5 26.213 464.999 459.574"
-	 xml:space="preserve">
+	 width="50px" height="50px" viewBox="230.999 231 50 50" enable-background="new 230.999 231 50 50" xml:space="preserve">
 <g>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M218.984,279.132L33.917,464.199c-3.889,3.889-3.889,10.199,0,14.088l0,0"/>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M427.403,60.305l23.323-23.324c4.31-4.309,9.678-4.405,14.082,0l13.272,13.272c3.889,3.889,3.892,10.196,0,14.088
-		c-3.889,3.889-10.199,3.889-14.088,0l-6.226-6.225l-25.076,25.077"/>
+	<path fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+		M252.096,258.439l-19.515,19.514c-0.409,0.41-0.409,1.076,0,1.486l0,0"/>
+	<path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M274.072,235.365
+		l2.46-2.459c0.454-0.455,1.021-0.465,1.485,0l1.398,1.398c0.411,0.41,0.411,1.076,0,1.486c-0.409,0.41-1.074,0.41-1.485,0
+		l-0.655-0.656l-2.645,2.645"/>
 	
-		<line fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="276.771" y1="310.399" x2="460.623" y2="126.547"/>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M429.578,279.35c-21.065,21.064-73.844,22.574-139.527-43.108"/>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M429.578,279.35c0,0-25.634-25.635-91.317-91.317"/>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M429.578,279.35c21.064-21.065,22.575-73.845-43.107-139.527"/>
+		<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="258.19" y1="261.736" x2="277.576" y2="242.35"/>
+	<path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M274.302,258.463
+		c-2.222,2.221-7.787,2.379-14.712-4.545"/>
+	<path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M274.302,258.463
+		c0,0-2.703-2.705-9.629-9.629"/>
+	<path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M274.302,258.463
+		c2.22-2.221,2.38-7.787-4.546-14.713"/>
 	
-		<line fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="324.861" y1="323.188" x2="473.315" y2="174.734"/>
-	<path fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
-		M434.673,91.619c65.684,65.683,37.034,145.601-5.095,187.73c-42.129,42.128-122.053,70.783-187.736,5.101L434.673,91.619z"/>
-	
-		<polygon fill="none" stroke="#000000" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
-		210.529,277.18 427.403,60.305 434.673,91.619 241.842,284.45 	"/>
+		<line fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="263.26" y1="263.084" x2="278.915" y2="247.432"/>
+	<path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="M274.839,238.668
+		c6.926,6.926,3.905,15.352-0.537,19.795c-4.443,4.441-12.87,7.463-19.796,0.537L274.839,238.668z"/>
+	<polygon fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		251.205,258.234 274.072,235.365 274.839,238.668 254.506,259 	"/>
 </g>
 </svg>
