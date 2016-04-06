@@ -338,7 +338,7 @@ body, html {
 
 /* line 28, ../sass/main.scss */
 body {
-  background: #4a98b1;
+  background: #77455a;
 }
 
 @keyframes rotate {
@@ -456,15 +456,15 @@ body {
 }
 /* line 137, ../sass/main.scss */
 #reels .pannel:nth-child(3n + 1):before {
-  background: yellow;
+  background: #f6ff9f;
 }
 /* line 140, ../sass/main.scss */
 #reels .pannel:nth-child(3n + 2):before {
-  background: pink;
+  background: #d8c3e8;
 }
 /* line 143, ../sass/main.scss */
 #reels .pannel:nth-child(3n + 3):before {
-  background: skyblue;
+  background: #a0fff1;
 }
 /* line 147, ../sass/main.scss */
 #reels .reel-window {
@@ -565,18 +565,20 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 230, ../sass/main.scss */
+/* line 228, ../sass/main.scss */
 #status-bar .option {
   position: absolute;
   top: 0;
   left: 10px;
+  opacity: 1;
 }
-/* line 234, ../sass/main.scss */
+/* line 233, ../sass/main.scss */
 #status-bar .option.hide {
-  -moz-transition-property: bottom;
-  -o-transition-property: bottom;
-  -webkit-transition-property: bottom;
-  transition-property: bottom;
+  opacity: 0;
+  -moz-transition-property: opacity;
+  -o-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
 }
 /* line 240, ../sass/main.scss */
 #status-bar .bulbs {
@@ -599,21 +601,20 @@ body {
 }
 /* line 254, ../sass/main.scss */
 #status-bar .bulbs span.active {
-  background-color: yellow;
   -moz-box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
   -webkit-box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
   box-shadow: rgba(255, 255, 0, 0.9) 0 0 10px 10px;
-}
-/* line 259, ../sass/main.scss */
-#status-bar .bulbs.hide {
-  top: -50px;
-  -moz-transition-property: top;
-  -o-transition-property: top;
-  -webkit-transition-property: top;
-  transition-property: top;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 1s;
+  -o-transition-duration: 1s;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
 }
 
-/* line 266, ../sass/main.scss */
+/* line 264, ../sass/main.scss */
 #drink {
   height: 150px;
   width: 240px;
@@ -627,12 +628,13 @@ body {
   position: relative;
   overflow: hidden;
 }
-/* line 283, ../sass/main.scss */
+/* line 281, ../sass/main.scss */
 #drink img {
   position: absolute;
   bottom: 150px;
-  margin-left: -50px;
-  left: 50%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   -webkit-transition-duration: 0.3s;
@@ -642,7 +644,7 @@ body {
   -webkit-transition-property: bottom;
   transition-property: bottom;
 }
-/* line 290, ../sass/main.scss */
+/* line 289, ../sass/main.scss */
 #drink img.show {
   bottom: 0px;
   position: absolute;

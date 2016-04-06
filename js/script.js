@@ -28,6 +28,7 @@ function init(){
 	        "transition":"0s ease all"
         });
 	});
+	enableButton();
 
 	$('button').click(play);
 	
@@ -80,6 +81,22 @@ function clearRotationDegree(){
 function turnOnLights(){
 	$("#status-bar .option").addClass("hide");
 	$("#status-bar .in-progress").removeClass("hide");
+	$("#status-bar .in-progress span").each(function(i, span){
+
+//         $(span).addClass("active");
+        $(span).animate({"background": "#3737A2"}, 250)/*
+
+	    .animate({backgroundColor: "#FFFFFF"}, 250)
+	    .animate({backgroundColor: "#3737A2"}, 250)
+	    .animate({backgroundColor: "#FFFFFF"}, 250)
+*/;
+        
+/*
+        setTimeout(function(){
+	        $(span).removeClass("active");
+	    }, 5000);
+*/
+	});
 
 }
 
