@@ -4,294 +4,284 @@
 @import "compass/css3";
 @import "compass/utilities/general/clearfix";
 
-$translateZ: translateZ(74px);
-$inner-border-radius: 14px;
-$decoration-color: #f0f0f0;
 
-$default-text-shadow-color: rgba(black, 0.6);
-$default-text-shadow-blur: 1px;
-$default-text-shadow-v-offset: 1px;
+// colors
+
+$background-color: #77455a;
+$machine-background-color: #e85d00;
+$machine-decor-color: #d43c00;
+$machine-decor-color-dark: #252525;
+$light-background: #fefdf5;
+
+$coffee-id-color: #f6ff9f;
+$tea-id-color: #d8c3e8;
+$espresso-id-color: #a0fff1;
+
+$gray-dark: #555;
+$black: black;
+
+
+// measurments
+
+$machine-width: 410px;
+
+$border-thick: 10px;
+$border-medium: 4px;
+$border-thin: 2px;
 
 $padding-unit: 30px;
 
-@mixin border-shadow($opacity) {
-	@include box-shadow(rgba(black, $opacity) 0 0 1px 1px, rgba(black, $opacity) 0 0 1px 1px inset);
-}
+$reel-window-height: 136px;
+$reel-pannel-width: 70px;
+$reel-pannel-height: 76px;
+$translateZ: translateZ(65px);
+$img-circle-diameter: $reel-pannel-width - 4px;
+$img-width: 50px;
+
+$play-button-diameter: 80px;
+
+$status-bulb-diameter: 28px;
 
 @mixin outer-shadow($opacity) {
-	@include box-shadow(rgba(black, $opacity) 0 0 1px 1px);
+	@include box-shadow(rgba($machine-decor-color-dark, $opacity) 0 0 1px 1px);
 }
 
 body, html {
 	height: 100%;
 }
 body {
-	background: #77455a;
+	background: $background-color;
 }
 
-@keyframes rotate {
-   0% { 
-	-webkit-transform: rotateX(0deg);
-	-moz-transform: rotateX(0deg);
-	transform: rotateX(0deg); 
-	}
-}
 .container {
 	display: flex;
-	align-content: center;
+	align-items: center;
 	justify-content: center;
 	min-height: 100%;
 }
 #caffeine-machine {
-	width: 410px;
-	border: 10px solid #d43c00;
-	background-color: #e85d00;
+	width: $machine-width;
+	height: auto;
+	border: $border-thick solid $machine-decor-color;
+	background-color: $machine-background-color;
 	border-radius: 40px;
-	margin: 40px;
+	margin: 20px;
 	padding-bottom: 60px;
 	
 	h1 {
 		font-family: 'Warnes', cursive;
-		font-size: 1.75rem;
+		font-style: italic;
+		font-size: 28px;
 		text-align: center;
-		color: black;
+		color: $machine-decor-color-dark;
 		font-weight: bold;
 	}
 	
 	h1, #reels, #status-bar > div{
 		padding: $padding-unit;
 	}
-}
-#reels {
-	background: repeating-linear-gradient(
-	  #d43c00,
-	  #d43c00 4px,
-	  #e85d00 4px,
-	  #e85d00 7px
-	);
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 
-	@include pie-clearfix;
-// 	width: 100%;
-// 	perspective: 500px;
-// 	margin: 30px 0;
-	position: relative;
-	
-	.pannel {
-		background: white;
-		width: 100%;
-		height: 100%;
-		text-align: center;
-		vertical-align: middle;
-		margin: 0;
-		position: absolute;
-		left: 0px;
-		top: 0px;
-		transform: $translateZ;
-		&:before {
-			content: "";
-			width: 66px;
-			height: 66px;
-			display: block;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			margin-left: -33px;
-			margin-top: -33px;
-			border-radius: 50%;
-		}
-		
-		
-		img {
-			width: 50px;
-			text-align: center;
-			vertical-align: middle;
-			margin: 0;
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			margin:  -25px 0 0 -25px;
-		}
-				
-		
-		&:nth-child(1) { 
-			transform: rotateX(0deg) $translateZ; 
-		}
-		&:nth-child(2) { 
-			transform: rotateX(60deg) $translateZ; 
-		}
-		&:nth-child(3) { 
-			transform: rotateX(120deg) $translateZ; 
-		}
-		&:nth-child(4) { 
-			transform: rotateX(180deg) $translateZ; 
-		}
-		&:nth-child(5) { 
-			transform: rotateX(240deg) $translateZ; 
-		}
-		&:nth-child(6) { 
-			transform: rotateX(300deg) $translateZ; 
-		}
-		&:nth-child(3n + 1):before {
-			background: #f6ff9f;
-		}
-		&:nth-child(3n + 2):before {
-			background: #d8c3e8;
-		}
-		&:nth-child(3n + 3):before {
-			background: #a0fff1;
-		}
-	}
-	.reel-window {
-		width: 70px;
-		height: 86px;
-		border-radius: 8px;
-		border: 4px solid black;
-		float: left;
-		margin-right: 12px;
-		overflow: hidden;
-		z-index: 1;
-		position: relative;
-		&:last-child {
-			margin-right: 0;
-		}
-/*
-		&:after {
-			content: "";
-			width: 70px;
-			height: 100px;
-			border-radius: 8px;
-			position: absolute;
-			top: -3px;
-			margin-left: -3px;
-			@include box-sizing(border-box);
-			@include border-shadow(0.2);
-			
-			border: 3px solid $decoration-color;
-			@include box-shadow(rgba(black, 0.7) 0 0 2px 1px inset);
-			z-index: 2;
-			
-			overflow: hidden;
-		}
-*/
-	}
-
-	
-	.reel {
-		width: 100%;
-		height: 100%;
-		transform-style: preserve-3d;
-		animation: rotate 5s;
-		position: relative;
-	}
-}
-
-#play {
-	height: 80px;
-	width: 80px;
-	background: #252525;
-	border: 4px solid black;
-	border-radius: 50%;
-	float: right;
-	font-family: 'Source Code Pro', sans-serif;
-	color: white;
-	font-size: 1rem;
-	@include transition-property(all);
-	@include transition-duration(0.3s);
-	&:focus, &:active {
-		outline: none;
-	}
-	&:hover {
-		background: black;
-		@include border-shadow(0.2);
-	}
-}
-
-#status-bar {
-	position: relative;
-	overflow: hidden;
-	
-	> div {
-		height: 100%;	
-		width: 100%;	
-		color: black;
-		letter-spacing: 27.8px;
-		font-family: 'Source Code Pro', sans-serif;
-		font-size: 1.25rem;
-		text-transform: uppercase;
-		line-height: 32px;
-		@include transition-duration(0.3s);
-		@include box-sizing(border-box);
-	}
-	.option {
-		position: absolute;
-		top: 0;
-		left: 10px;
-		opacity: 1;
-		&.hide {
-			opacity: 0;
-			@include transition-property(opacity);
-		}
-		
-	}
-	
-	.bulbs {
+	#reels {
+		background: repeating-linear-gradient(
+		  $machine-decor-color,
+		  $machine-decor-color 4px,
+		  $machine-background-color 4px,
+		  $machine-background-color 7px
+		);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		top: 0;
+		position: relative;
 		
-		span {
-			height: 28px;
-			width: 28px;
-			display: block;
-			background: white;
-			border-radius: 50%;
-			border: 2px solid black;
-			@include outer-shadow(0.2);
-			&.active {
-// 				background-color: yellow;
-				@include box-shadow(rgba(yellow, 0.9) 0 0 10px 10px);
-				@include transition-property(all);
-				@include transition-duration(1s);
+		.reel-window {
+			width: $reel-pannel-width;
+			height: $reel-window-height;
+			border-radius: $border-medium * 2;
+			border: $border-medium solid $machine-decor-color-dark;
+			background: $light-background;
+			overflow: hidden;
+			position: relative;
+			
+			&:after {
+				content: "";
+				width: $reel-pannel-width;
+				height: $reel-window-height;
+				position: absolute;
+				top: 0px;
+				@include background-image(linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0) 15%, rgba(0,0,0,0) 85%, rgba(0,0,0,0.4)));
+			}
+		}
+	
+		.reel {
+			width: 100%;
+			height: 100%;
+			transform-style: preserve-3d;
+			position: relative;
+		}
+	
+		.pannel {
+			width: 100%;
+			height: $reel-pannel-height;
+			text-align: center;
+			vertical-align: middle;
+			position: absolute;
+			left: 0px;
+			top: 50%;
+			margin: (-$reel-pannel-height / 2) 0 0 0;
+			@include backface-visibility(hidden);
+			&:before {
+				content: "";
+				width: $img-circle-diameter;
+				height: $img-circle-diameter;
+				display: block;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: (-$img-circle-diameter / 2);
+				margin-top: (-$img-circle-diameter / 2);
+				border-radius: 50%;
+			}
+			
+			img {
+				width: $img-width;
+				position: absolute;
+				left: 50%;
+				top: 50%;
+				margin: (-$img-width / 2) 0 0 (-$img-width / 2);
+			}
+					
+			&:nth-child(1) { 
+				transform: rotateX(0deg) $translateZ; 
+			}
+			&:nth-child(2) { 
+				transform: rotateX(60deg) $translateZ; 
+			}
+			&:nth-child(3) { 
+				transform: rotateX(120deg) $translateZ; 
+			}
+			&:nth-child(4) { 
+				transform: rotateX(180deg) $translateZ; 
+			}
+			&:nth-child(5) { 
+				transform: rotateX(240deg) $translateZ; 
+			}
+			&:nth-child(6) { 
+				transform: rotateX(300deg) $translateZ; 
+			}
+			
+			// matching background color for each beverage
+			&:nth-child(3n + 1):before {
+				background: $coffee-id-color;
+			}
+			&:nth-child(3n + 2):before {
+				background: $tea-id-color;
+			}
+			&:nth-child(3n + 3):before {
+				background: $espresso-id-color;
 			}
 		}
 	}
-}
 
-#drink {
-	height: 150px;
-	width: 240px;
-	background: repeating-linear-gradient(
-		135deg,
-		#666,
-		#666 6px,
-		#555 6px,
-		#555 12px
-	);
-	border-radius: 10px;
-	border: 10px solid #252525;
-	margin: 0 auto;
-	@include box-shadow(rgba(black, 0.2) 0 0 1px 1px, rgba(black, 0.9) 0 0 3px 1px inset);
-	position: relative;
-	overflow: hidden;
-	
-	img {
-		position: absolute;
-		bottom: 150px;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
+	#play {
+		height: $play-button-diameter;
+		width: $play-button-diameter;
+		padding: 0;
+		background: $machine-decor-color-dark;
+		border: $border-medium solid $black;
+		border-radius: 50%;
+		font-family: 'Source Code Pro', sans-serif;
+		color: white;
+		font-size: 16px;
+		@include transition-property(all);
 		@include transition-duration(0.3s);
-		@include transition-property(bottom);
-		&.show {
-			bottom: 0px;
-			position: absolute;
+		&:focus, &:active {
+			outline: none;
+		}
+		&:hover {
+			background: $black;
 		}
 	}
-	
 
+	#status-bar {
+		position: relative;
+		overflow: hidden;
+		
+		> div {
+			height: 100%;	
+			width: 100%;	
+			color: $machine-decor-color-dark;
+			letter-spacing: 27.8px;
+			font-family: 'Source Code Pro', sans-serif;
+			font-size: 20px;
+			text-transform: uppercase;
+			line-height: 32px;
+			@include transition-duration(0.2s);
+			@include box-sizing(border-box);
+		}
+		.option {
+			position: absolute;
+			top: 0;
+			left: 10px;
+			opacity: 1;
+			&.hide {
+				opacity: 0;
+				@include transition-property(opacity);
+			}
+			
+		}
+		
+		.bulbs {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			top: 0;
+			
+			span {
+				height: $status-bulb-diameter;
+				width: $status-bulb-diameter;
+				display: block;
+				background: $light-background;
+				border-radius: 50%;
+				border: $border-thin solid $machine-decor-color-dark;
+				@include outer-shadow(0.3);
+				&.active {
+					@include box-shadow(rgba(yellow, 0.5) 0 0 10px 10px);
+					@include transition-property(all);
+					@include transition-duration(0.2s);
+				}
+			}
+		}
+	}
 
+	#drink {
+		height: 150px;
+		width: 240px;
+		background: repeating-linear-gradient(
+			90deg,
+			lighten($gray-dark, 6%),
+			lighten($gray-dark, 6%) 6px,
+			$gray-dark 6px,
+			$gray-dark 12px
+		);
+		border-radius: $border-thick;
+		border: $border-thick solid $machine-decor-color-dark;
+		margin: 0 auto;
+		@include box-shadow(rgba($machine-decor-color-dark, 0.3) 0 0 1px 1px, rgba($machine-decor-color-dark, 0.9) 0 0 3px 1px inset);
+		position: relative;
+		overflow: hidden;
+		
+		img {
+			position: absolute;
+			bottom: 150px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+			@include transition-duration(0.5s);
+			@include transition-property(bottom);
+			&.show {
+				bottom: 0px;
+				position: absolute;
+			}
+		}
+	}
 }
