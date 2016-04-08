@@ -51,12 +51,29 @@ body, html {
 }
 body {
 	background: $background-color;
+	font-size: 12px;
+	letter-spacing: 1px;
+}
+.contact-info {
+	a {
+		text-decoration: none;
+		color: $black;
+		opacity: 0.5;
+		text-transform: uppercase;
+		@include transition-property(all);
+		@include transition-duration(0.3s);
+	
+		&:hover {
+			opacity: 1;
+		}
+	}
 }
 
 .container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 	min-height: 100%;
 }
 #caffeine-machine {
@@ -67,6 +84,7 @@ body {
 	border-radius: 40px;
 	margin: 20px;
 	padding-bottom: 60px;
+	position: relative;
 	
 	h1 {
 		font-family: 'Warnes', cursive;
@@ -189,7 +207,6 @@ body {
 		background: $machine-decor-color-dark;
 		border: $border-medium solid $black;
 		border-radius: 50%;
-		font-family: 'Source Code Pro', sans-serif;
 		color: white;
 		font-size: 16px;
 		@include transition-property(all);
@@ -283,5 +300,15 @@ body {
 				position: absolute;
 			}
 		}
+	}
+	.made-in {
+		text-transform: uppercase;
+		font-size: 10px;
+		color: $machine-decor-color;
+		width: 100%;
+		text-align: center;
+		position: absolute;
+		bottom: 10px;
+		font-weight: bold;
 	}
 }

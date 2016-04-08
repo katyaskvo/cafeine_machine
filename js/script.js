@@ -12,12 +12,8 @@ const ESPRESSO = -2;
 
 var reelRotations = [];
 var cssRotationValue = "";
-
 var positions = [COFFEE, COFFEE, COFFEE];
-
 var losesCounter = 0;
-
-
 
 
 function init(){

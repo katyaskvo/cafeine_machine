@@ -339,17 +339,40 @@ body, html {
 /* line 52, ../sass/main.scss */
 body {
   background: #77455a;
+  font-size: 12px;
+  letter-spacing: 1px;
 }
 
-/* line 56, ../sass/main.scss */
+/* line 58, ../sass/main.scss */
+.contact-info a {
+  text-decoration: none;
+  color: black;
+  opacity: 0.5;
+  text-transform: uppercase;
+  -moz-transition-property: all;
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+/* line 66, ../sass/main.scss */
+.contact-info a:hover {
+  opacity: 1;
+}
+
+/* line 72, ../sass/main.scss */
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   min-height: 100%;
 }
 
-/* line 62, ../sass/main.scss */
+/* line 79, ../sass/main.scss */
 #caffeine-machine {
   width: 410px;
   height: auto;
@@ -358,8 +381,9 @@ body {
   border-radius: 40px;
   margin: 20px;
   padding-bottom: 60px;
+  position: relative;
 }
-/* line 71, ../sass/main.scss */
+/* line 89, ../sass/main.scss */
 #caffeine-machine h1 {
   font-family: 'Warnes', cursive;
   font-style: italic;
@@ -368,11 +392,11 @@ body {
   color: #252525;
   font-weight: bold;
 }
-/* line 80, ../sass/main.scss */
+/* line 98, ../sass/main.scss */
 #caffeine-machine h1, #caffeine-machine #reels, #caffeine-machine #status-bar > div {
   padding: 30px;
 }
-/* line 84, ../sass/main.scss */
+/* line 102, ../sass/main.scss */
 #caffeine-machine #reels {
   background: repeating-linear-gradient(#d43c00, #d43c00 4px, #e85d00 4px, #e85d00 7px);
   display: flex;
@@ -380,7 +404,7 @@ body {
   align-items: center;
   position: relative;
 }
-/* line 96, ../sass/main.scss */
+/* line 114, ../sass/main.scss */
 #caffeine-machine #reels .reel-window {
   width: 70px;
   height: 136px;
@@ -390,7 +414,7 @@ body {
   overflow: hidden;
   position: relative;
 }
-/* line 105, ../sass/main.scss */
+/* line 123, ../sass/main.scss */
 #caffeine-machine #reels .reel-window:after {
   content: "";
   width: 70px;
@@ -404,14 +428,14 @@ body {
   background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.4));
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0) 15%, rgba(0, 0, 0, 0) 85%, rgba(0, 0, 0, 0.4));
 }
-/* line 115, ../sass/main.scss */
+/* line 133, ../sass/main.scss */
 #caffeine-machine #reels .reel {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
   position: relative;
 }
-/* line 122, ../sass/main.scss */
+/* line 140, ../sass/main.scss */
 #caffeine-machine #reels .pannel {
   width: 100%;
   height: 76px;
@@ -425,7 +449,7 @@ body {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
-/* line 132, ../sass/main.scss */
+/* line 150, ../sass/main.scss */
 #caffeine-machine #reels .pannel:before {
   content: "";
   width: 66px;
@@ -438,7 +462,7 @@ body {
   margin-top: -33px;
   border-radius: 50%;
 }
-/* line 145, ../sass/main.scss */
+/* line 163, ../sass/main.scss */
 #caffeine-machine #reels .pannel img {
   width: 50px;
   position: absolute;
@@ -446,43 +470,43 @@ body {
   top: 50%;
   margin: -25px 0 0 -25px;
 }
-/* line 153, ../sass/main.scss */
+/* line 171, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(1) {
   transform: rotateX(0deg) translateZ(65px);
 }
-/* line 156, ../sass/main.scss */
+/* line 174, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(2) {
   transform: rotateX(60deg) translateZ(65px);
 }
-/* line 159, ../sass/main.scss */
+/* line 177, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(3) {
   transform: rotateX(120deg) translateZ(65px);
 }
-/* line 162, ../sass/main.scss */
+/* line 180, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(4) {
   transform: rotateX(180deg) translateZ(65px);
 }
-/* line 165, ../sass/main.scss */
+/* line 183, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(5) {
   transform: rotateX(240deg) translateZ(65px);
 }
-/* line 168, ../sass/main.scss */
+/* line 186, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(6) {
   transform: rotateX(300deg) translateZ(65px);
 }
-/* line 173, ../sass/main.scss */
+/* line 191, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(3n + 1):before {
   background: #f6ff9f;
 }
-/* line 176, ../sass/main.scss */
+/* line 194, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(3n + 2):before {
   background: #d8c3e8;
 }
-/* line 179, ../sass/main.scss */
+/* line 197, ../sass/main.scss */
 #caffeine-machine #reels .pannel:nth-child(3n + 3):before {
   background: #a0fff1;
 }
-/* line 185, ../sass/main.scss */
+/* line 203, ../sass/main.scss */
 #caffeine-machine #play {
   height: 80px;
   width: 80px;
@@ -490,7 +514,6 @@ body {
   background: #252525;
   border: 4px solid black;
   border-radius: 50%;
-  font-family: 'Source Code Pro', sans-serif;
   color: white;
   font-size: 16px;
   -moz-transition-property: all;
@@ -502,20 +525,20 @@ body {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
 }
-/* line 197, ../sass/main.scss */
+/* line 214, ../sass/main.scss */
 #caffeine-machine #play:focus, #caffeine-machine #play:active {
   outline: none;
 }
-/* line 200, ../sass/main.scss */
+/* line 217, ../sass/main.scss */
 #caffeine-machine #play:hover {
   background: black;
 }
-/* line 205, ../sass/main.scss */
+/* line 222, ../sass/main.scss */
 #caffeine-machine #status-bar {
   position: relative;
   overflow: hidden;
 }
-/* line 209, ../sass/main.scss */
+/* line 226, ../sass/main.scss */
 #caffeine-machine #status-bar > div {
   height: 100%;
   width: 100%;
@@ -533,14 +556,14 @@ body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 221, ../sass/main.scss */
+/* line 238, ../sass/main.scss */
 #caffeine-machine #status-bar .option {
   position: absolute;
   top: 0;
   left: 10px;
   opacity: 1;
 }
-/* line 226, ../sass/main.scss */
+/* line 243, ../sass/main.scss */
 #caffeine-machine #status-bar .option.hide {
   opacity: 0;
   -moz-transition-property: opacity;
@@ -548,14 +571,14 @@ body {
   -webkit-transition-property: opacity;
   transition-property: opacity;
 }
-/* line 233, ../sass/main.scss */
+/* line 250, ../sass/main.scss */
 #caffeine-machine #status-bar .bulbs {
   display: flex;
   justify-content: space-between;
   align-items: center;
   top: 0;
 }
-/* line 239, ../sass/main.scss */
+/* line 256, ../sass/main.scss */
 #caffeine-machine #status-bar .bulbs span {
   height: 28px;
   width: 28px;
@@ -567,7 +590,7 @@ body {
   -webkit-box-shadow: rgba(37, 37, 37, 0.3) 0 0 1px 1px;
   box-shadow: rgba(37, 37, 37, 0.3) 0 0 1px 1px;
 }
-/* line 247, ../sass/main.scss */
+/* line 264, ../sass/main.scss */
 #caffeine-machine #status-bar .bulbs span.active {
   -moz-box-shadow: rgba(255, 255, 0, 0.5) 0 0 10px 10px;
   -webkit-box-shadow: rgba(255, 255, 0, 0.5) 0 0 10px 10px;
@@ -581,7 +604,7 @@ body {
   -webkit-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-/* line 256, ../sass/main.scss */
+/* line 273, ../sass/main.scss */
 #caffeine-machine #drink {
   height: 150px;
   width: 240px;
@@ -595,7 +618,7 @@ body {
   position: relative;
   overflow: hidden;
 }
-/* line 273, ../sass/main.scss */
+/* line 290, ../sass/main.scss */
 #caffeine-machine #drink img {
   position: absolute;
   bottom: 150px;
@@ -611,8 +634,19 @@ body {
   -webkit-transition-property: bottom;
   transition-property: bottom;
 }
-/* line 281, ../sass/main.scss */
+/* line 298, ../sass/main.scss */
 #caffeine-machine #drink img.show {
   bottom: 0px;
   position: absolute;
+}
+/* line 304, ../sass/main.scss */
+#caffeine-machine .made-in {
+  text-transform: uppercase;
+  font-size: 10px;
+  color: #d43c00;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 10px;
+  font-weight: bold;
 }
