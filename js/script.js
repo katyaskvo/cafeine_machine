@@ -2,18 +2,21 @@ var reels = [
 				['coffee-maker', 'teapot', 'espresso-machine', 'coffee-maker', 'teapot', 'espresso-machine'],
 				['coffee-filter', 'tea-strainer', 'espresso-tamper', 'coffee-filter', 'tea-strainer', 'espresso-tamper'],
 				['coffee-grounds', 'loose-tea', 'coffee-beans', 'coffee-grounds', 'loose-tea', 'coffee-beans']
-				/*
-
-				['coffee-filter',  'tea-strainer', 'espresso-tamper'],
-				['coffee-grounds', 'loose-tea',    'ground-espresso-beans']
-*/
 			];
-var $reels;
-var spinningTime = 2000;
+const SPINNING_TIME = 5000;
+const LOSES_LIMIT = 5;
+const ANGLE = 60;
+const COFFEE = 0;
+const TEA = -1;
+const ESPRESSO = -2;
+
 var reelRotations = [];
 var cssRotationValue = "";
-var positions = [0, 0, 0];
-var angle = 60;
+
+var positions = [COFFEE, COFFEE, COFFEE];
+
+var losesCounter = 0;
+
 
 
 
@@ -23,101 +26,116 @@ function init(){
 			reelContent.innerHTML += '<div class="pannel"><img src="img/' + reels[i][j] + '.svg" /></div>';
 		}
 		$(this).css({
+			"transform":"rotateX(0deg)",
 			"-moz-transform":"rotateX(0deg)",
 	        "-webkit-transform":"rotateX(0deg)",
-	        "transition":"0s ease all"
+	        "transition":"0s ease all",
+	        "-webkit-transition":"0s ease all"
         });
 	});
-	enableButton();
-
-	$('button').click(play);
 	
+	enableButton();
+	$('button').click(play);
 }
 
 function play(){
+	clearResult();
 	
-	
-	for (var i = 0; i < reels.length; i++) {
-		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * angle;	 // random number from 10 to 40 multiplied by 120 degree
-		positions[i] = (reelRotations[i] / angle) % 3  // calculates reel index position
-	}
-	$("#drink > img").removeClass("show");
-	turnOnLights();	
+	if (losesCounter >= LOSES_LIMIT) {
+		generateWinningSpin();
+	} else {
+		generateRandomSpin();
+	}	
 	animate();
-	setTimeout(clearRotationDegree, 5000);
-	setTimeout(check, 5000);
+	setTimeout(statusMessage, SPINNING_TIME - 200);
+	setTimeout(clearRotationDegree, SPINNING_TIME);
+}
+
+function generateRandomSpin(){
+	for (var i = 0; i < reels.length; i++) {
+		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * ANGLE;	 // random number multiplied by 120 degrees
+		positions[i] = (reelRotations[i] / ANGLE) % 3  // calculate reel index position
+	}
+}
+
+function generateWinningSpin(){
+	var randomDegree = - (Math.floor(Math.random() * 30) + 20) * ANGLE;
+	reelRotations[0] = randomDegree;
+// 	var originPositions = positions;
+	positions[0] = (randomDegree / ANGLE) % 3;
+		
+	for (var i = 1; i < reels.length; i++) {
+		reelRotations[i] = (randomDegree + (positions[0] - positions[i]) * ANGLE) - (positions[0] - positions[i]) * ANGLE;	 // random number multiplied by 120 degrees
+		positions[i] = ((reelRotations[i]) / ANGLE) % 3; // calculate reel index position
+		
+	}
+}
+
+function clearResult(){
+	$("#drink > img").removeClass("show");
+	$("#status-bar .option").addClass("hide");
+	$("#status-bar .in-progress span").removeClass("active");
 }
 
 function animate(){
 	var cssRotationValue = "";
 	$('.reel').each(function(i, reel){
 		cssRotationValue = "rotateX(" + reelRotations[i] + "deg)";
-		
+		cssTransitionValue = SPINNING_TIME/1000 + "s ease all"
 		$(reel).css({
+			"transform":cssRotationValue,
 			"-moz-transform":cssRotationValue,
 	        "-webkit-transform":cssRotationValue,
-	        "transition":"5s ease all"
+	        "transition":cssTransitionValue,
+	        "-webkit-transition-duration":cssTransitionValue
         });
 	});
 	$('#play').attr("disabled", "disabled");
-	setTimeout('enableButton()', 5000);
+	setTimeout('enableButton()', SPINNING_TIME);
 }
 
 function clearRotationDegree(){
-	
 	$('.reel').each(function(i, reel){
-        initialCssRotationValue = positions[i] * angle;
-        console.log("init rot value: " + initialCssRotationValue);
-        initialCssRotationValue = "rotateX(" + initialCssRotationValue + "deg)";
+        initialRotationValue = positions[i] * ANGLE;
+        initialCssRotationValue = "rotateX(" + initialRotationValue + "deg)";
 
         $(reel).css({
+	        "transform":initialCssRotationValue,
 			"-moz-transform":initialCssRotationValue,
 	        "-webkit-transform":initialCssRotationValue,
-	        "transition":"0s ease all"
+	        "transition":"0s ease all",
+	        "-webkit-transition":"0s ease all"
         });
 	});
 }
 
-function turnOnLights(){
-	$("#status-bar .option").addClass("hide");
-	$("#status-bar .in-progress").removeClass("hide");
-	$("#status-bar .in-progress span").each(function(i, span){
-
-//         $(span).addClass("active");
-        $(span).animate({"background": "#3737A2"}, 250)/*
-
-	    .animate({backgroundColor: "#FFFFFF"}, 250)
-	    .animate({backgroundColor: "#3737A2"}, 250)
-	    .animate({backgroundColor: "#FFFFFF"}, 250)
-*/;
-        
-/*
-        setTimeout(function(){
-	        $(span).removeClass("active");
-	    }, 5000);
-*/
-	});
-
+function statusMessage(){
+	check();
+	$("#status-bar .in-progress span").addClass("active");
 }
 
 function check(){
 	$("#status-bar .option").addClass("hide");
-	console.log("positions array: " + positions);
+	
 	if (positions[0] === positions[1] && positions[1] === positions[2]) {
-		if (positions[0] === 0) {
+		if (positions[0] === COFFEE) {
 			$("#status-bar .coffee").removeClass("hide");
 			$("#coffee").addClass("show");
-		} else if (positions[0] === -1){
+		} else if (positions[0] === TEA){
 			$("#status-bar .tea").removeClass("hide");
 			$("#tea").addClass("show");
-		} else {
+		} else if (positions[0] === ESPRESSO){
 			$("#status-bar .espresso").removeClass("hide");
 			$("#espresso").addClass("show");
+		} else {
+			$("#status-bar .error").removeClass("hide");
 		}
+		
+		losesCounter = 0;
 	} else {
 		$("#status-bar .lose").removeClass("hide");
+		losesCounter += 1;
 	}
-	
 }
 
 function enableButton(){
