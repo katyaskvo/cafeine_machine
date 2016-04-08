@@ -4,11 +4,12 @@ var reels = [
 				['coffee-grounds', 'loose-tea', 'coffee-beans', 'coffee-grounds', 'loose-tea', 'coffee-beans']
 			];
 const SPINNING_TIME = 5000;
-const LOSES_LIMIT = 5;
+const LOSES_LIMIT = 1;
 const ANGLE = 60;
 const COFFEE = 0;
 const TEA = -1;
 const ESPRESSO = -2;
+
 
 var reelRotations = [];
 var cssRotationValue = "";
@@ -49,21 +50,17 @@ function play(){
 
 function generateRandomSpin(){
 	for (var i = 0; i < reels.length; i++) {
-		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * ANGLE;	 // random number multiplied by 120 degrees
+		reelRotations[i] = - (Math.floor(Math.random() * 30) + 20) * ANGLE;	 // generate random rotation degree for each reel
 		positions[i] = (reelRotations[i] / ANGLE) % 3  // calculate reel index position
 	}
 }
 
 function generateWinningSpin(){
-	var randomDegree = - (Math.floor(Math.random() * 30) + 20) * ANGLE;
-	reelRotations[0] = randomDegree;
-// 	var originPositions = positions;
-	positions[0] = (randomDegree / ANGLE) % 3;
+	var randomDegree = - (Math.floor(Math.random() * 30) + 20) * ANGLE; // generate same rotation degree for all reels
 		
-	for (var i = 1; i < reels.length; i++) {
-		reelRotations[i] = (randomDegree + (positions[0] - positions[i]) * ANGLE) - (positions[0] - positions[i]) * ANGLE;	 // random number multiplied by 120 degrees
-		positions[i] = ((reelRotations[i]) / ANGLE) % 3; // calculate reel index position
-		
+	for (var i = 0; i < reels.length; i++) {
+		reelRotations[i] = randomDegree;
+		positions[i] = (reelRotations[i] / ANGLE) % 3;
 	}
 }
 
@@ -74,7 +71,6 @@ function clearResult(){
 }
 
 function animate(){
-	var cssRotationValue = "";
 	$('.reel').each(function(i, reel){
 		cssRotationValue = "rotateX(" + reelRotations[i] + "deg)";
 		cssTransitionValue = SPINNING_TIME/1000 + "s ease all"
